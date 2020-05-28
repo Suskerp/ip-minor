@@ -1,0 +1,42 @@
+<head th:replace="head"></head>
+<body>
+<div class="page-header text-center">
+    <h4 th:text="#{detail.title}"></h4>
+</div>
+
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading" th:text="${task.title}"></div>
+        <div class="panel-body">
+            <div class="col-md-6">
+                <div class="row">
+                    <div th:if="${task != null}">
+                        <p th:text="#{detail.description} +${task.description}"></p>
+                        <p th:text="#{detail.duedate} + ${task.formattedDueDate}"></p>
+                    </div>
+                    <div th:unless="${task != null}">
+                        <p>No task found</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-primary" th:each="subTask : ${task.subTasks}">
+        <div class="panel-heading" th:text="*{subTask.title}"></div>
+        <div class="panel-body">
+            <div class="col-md-6">
+                <div class="row">
+                    <div>
+                        <p th:text="#{detail.description} + *{subTask.description}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer  th:replace="footer"></footer>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</html>

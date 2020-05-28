@@ -1,0 +1,22 @@
+<head th:replace="head"></head>
+<body>
+<div class="page-header text-center">
+    <h4>Tasks</h4>
+</div>
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">403</div>
+         <div th:text="#{error.403}"></div>
+    </div>
+</div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script>
+    window.setTimeout(function(){
+        window.location.href='http://localhost:8080/task';
+    }, 10000);
+</script>
+<footer  th:replace="footer"></footer>
+</html>

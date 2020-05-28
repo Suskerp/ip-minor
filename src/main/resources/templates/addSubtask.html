@@ -1,0 +1,37 @@
+<head th:replace="head"></head>
+<body>
+<div class="page-header text-center">
+    <h4 th:text="#{addsubtask.title}"></h4>
+</div>
+<form th:method="post" th:action="@{/task/sub/create}" th:object="${subTaskDTO}">
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading" th:text="#{addsubtask.heading} + ${task.title}" >Edit</div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label" for="title" th:text="#{form.title}"></label>
+                            <input type="text" class="form-control" name="title" id="title" th:field="*{title}">
+                            <p th:errors="*{title}"></p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label" for="description" th:text="#{form.description}"></label>
+                            <input type="text" class="form-control" name="description" id="description"  th:field="*{description}">
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" class="btn btn-primary" value="Submit">
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="id" name="id"  th:value="${task.taskID}">
+</form>
+<footer  th:replace="footer"></footer>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</html>

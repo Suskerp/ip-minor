@@ -1,0 +1,55 @@
+<head th:replace="head"></head>
+<form th:method="post" th:action="@{/task/new}" th:object="${taskDTO}">
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading" th:text="#{overview.panel2title}"></div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label" for="title" th:text="#{form.title}"></label>
+                            <input type="text" class="form-control" name="title" id="title" th:field="*{title}">
+                            <p th:errors="*{title}"></p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label" for="description" th:text="#{form.description}"></label>
+                            <input type="text" class="form-control" name="description" id="description" th:field="*{description}">
+                            <p th:errors="*{description}"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class='col-md-6'>
+                        <div class="form-group">
+                            <label class="control-label" for="dueDate" th:text="#{form.duedate}"></label>
+                            <div class='input-group date' id="datePicker">
+                                <input type='text' class="form-control" name="dueDate" id="dueDate" th:field="*{dueDate}"/>
+                                <span class="input-group-addon">
+                     <span class="glyphicon glyphicon-calendar"></span>
+                     </span>
+                                <p th:errors="*{dueDate}"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" class="btn btn-primary" value="Submit">
+            </div>
+        </div>
+    </div>
+</form>
+<footer  th:replace="footer"></footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+<script>
+    $(function () {
+        $('#datePicker').datetimepicker({
+            format:'DD-MM-YYYY HH:mm'
+        });
+    });
+</script>
+</html>

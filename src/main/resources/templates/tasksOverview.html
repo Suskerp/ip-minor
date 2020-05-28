@@ -1,0 +1,36 @@
+<head th:replace="head"></head>
+<link rel="stylesheet" href="style.css">
+<body>
+<div class="page-header text-center">
+    <h4 th:text="#{title}">Tasks</h4>
+</div>
+
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading" th:text="#{overview.panel1title}"></div>
+        <div th:if="${tasks != null and !tasks.empty}" th:each="task : ${tasks}" class="panel-body text-center">
+            <div th:text="(*{task.title})+ ' ' + #{overview.dueon} + (*{task.formattedDueDate})" class="row"></div>
+            <div><a th:href="@{'/task/' +  ${task.taskID}}" th:text="#{overview.description}"></a>
+                <a sec:authorize-url="/task/edit" th:href="@{'/task/edit/' + ${task.taskID}}" th:text="#{overview.edit}"></a>
+                <a sec:authorize-url="/task/sub/create" th:href="@{'/task/' + ${task.taskID} + '/sub/create'}" th:text="#{overview.subtask}"></a></div>
+        </div>
+        <div th:unless="${tasks != null and !tasks.empty}" class="panel-body text-center">
+            <div th:text="#{overview.notasks}" class="row"></div>
+        </div>
+    </div>
+</div>
+
+<footer  th:replace="footer"></footer>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+<script>
+    $(function () {
+        $('#datePicker').datetimepicker({
+            format:'DD-MM-YYYY HH:mm'
+        });
+    });
+</script>
+</html>
