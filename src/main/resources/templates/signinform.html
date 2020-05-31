@@ -1,5 +1,6 @@
 <head th:replace="head"></head>
 <body class="text-center">
+<small class="form-text text-muted">Admin login: admin t          User login: user t </small>
 <p th:if="${param.logout}" th:text="#{login.logoutsucces}"></p>
 <p th:if="${param.error}" th:text="#{login.invalidcredentials}"></p>
 <form class="form-signin" th:method="post" th:action="@{/login}">
